@@ -1,4 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using Service.Domain.ModelsDb;
 using System;
 using System.Collections.Generic;
@@ -26,7 +26,12 @@ namespace Service.DAL.Storage
 
         public async Task<UserDb?> GetAsync(Guid id)
         {
-            return await _db.Users.FirstOrDefaultAsync(x => x.Id == id);
+            return null; // Not used for int-based IDs
+        }
+
+        public async Task<UserDb?> GetByIdAsync(int id)
+        {
+            return await _db.Users.FirstOrDefaultAsync(x => x.UserId == id);
         }
 
         public IQueryable<UserDb> GetAll()
@@ -48,7 +53,7 @@ namespace Service.DAL.Storage
 
         public async Task<bool> Exists(Guid id)
         {
-            return await _db.Users.AnyAsync(x => x.Id == id);
+            return false; // Not used for int-based IDs
         }
 
         public async Task<List<UserDb>> GetListByCondition(Expression<Func<UserDb, bool>> condition)
