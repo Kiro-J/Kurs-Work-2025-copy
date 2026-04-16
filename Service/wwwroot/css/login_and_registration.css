@@ -1,0 +1,252 @@
+﻿/* Контейнер формы */
+.form-container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    width: 400px;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.3);
+    z-index: 1000;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+    .form-container.active {
+        transform: translate(-50%, -50%) scale(1);
+    }
+
+/* Полупрозрачный фон */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.6);
+    opacity: 0;
+    visibility: hidden;
+    z-index: 1000;
+    transition: all 0.3s ease;
+}
+
+    .overlay.active {
+        opacity: 1;
+        visibility: visible;
+    }
+
+/* Формы */
+.form-box {
+    padding: 40px;
+    text-align: center;
+}
+
+    .form-box h2 {
+        margin-bottom: 20px;
+        color: #ff6a00;
+    }
+
+/* Поля ввода */
+.input-box {
+    position: relative;
+    margin: 20px 0;
+}
+
+    .input-box input {
+        width: 100%;
+        padding: 10px;
+        border: none;
+        border-bottom: 2px solid #ccc;
+        outline: none;
+        font-size: 16px;
+        background: transparent;
+    }
+
+    .input-box label {
+        position: absolute;
+        left: 0;
+        bottom: 10px;
+        color: #999;
+        pointer-events: none;
+        transition: 0.3s;
+    }
+
+    .input-box input:focus ~ label,
+    .input-box input:valid ~ label {
+        transform: translateY(-20px);
+        font-size: 12px;
+        color: #ff6a00;
+    }
+
+/* Кнопка */
+.btn {
+    width: 100%;
+    padding: 10px;
+    background: #ff6a00;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+    .btn:hover {
+        background: #ff7f2a;
+    }
+
+/* Переключение форм */
+.form-box.register {
+    display: none;
+}
+
+.form-container.show-register .login {
+    display: none;
+}
+
+.form-container.show-register .register {
+    display: block;
+}
+
+/* Ссылки */
+.switch-form {
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+    .switch-form a {
+        color: #ff6a00;
+        text-decoration: none;
+    }
+
+        .switch-form a:hover {
+            text-decoration: underline;
+        }
+
+
+
+
+.error {
+    color: red;
+    margin-top: 5px;
+    font-size: 14px;
+}
+
+
+
+.auth-section {
+    width: 300px;
+    margin: 20px auto;
+}
+
+.auth-title {
+    color: orange;
+    text-align: center;
+}
+
+.auth-form {
+    display: flex;
+    flex-direction: column;
+}
+
+    .auth-form .input-field {
+        margin: 5px 0;
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+
+.btn-orange {
+    background-color: orange;
+    color: white;
+    border: none;
+    padding: 10px;
+    margin-top: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.auth-login-text, .auth-register-text {
+    text-align: center;
+    margin-top: 10px;
+}
+
+
+/* Стили для подтверждения почты */
+.container-confirm-email {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1001;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.5); /* Затемнение фона */
+}
+
+.confirm-container {
+    background: #fff;
+    padding: 40px 30px; /* Чуть больше отступы */
+    border-radius: 10px;
+    width: 400px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 5px 45px rgba(0,0,0,0.25);
+    z-index: 1002;
+    position: relative;
+}
+
+.confirm-box {
+    width: 100%;
+}
+
+.confirm-btn {
+    /* Используем ваш основной оранжевый цвет */
+    background-color: rgb(255, 165, 0);
+    color: #fff;
+    margin-top: 20px;
+    text-align: center;
+    cursor: pointer;
+    padding: 12px; /* Чуть больше поле для клика */
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+}
+
+    .confirm-btn:hover {
+        /* Затемненный оранжевый при наведении */
+        background-color: rgb(225, 145, 0);
+    }
+
+/* Поля ввода */
+.form-group {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+    .form-group label {
+        display: block;
+        margin-bottom: 8px;
+        color: #333;
+        font-weight: 500;
+    }
+
+.form-control {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+    font-size: 14px;
+    transition: border-color 0.3s;
+}
+
+    /* Подсветка поля при вводе вашим цветом */
+    .form-control:focus {
+        border-color: rgb(255, 165, 0);
+    }
