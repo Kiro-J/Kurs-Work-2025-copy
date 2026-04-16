@@ -1,49 +1,52 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Service.Domain.ModelsDb
 {
-    [Table("Users")]
+    [Table("users")]
     public class UserDb
     {
         public UserDb()
         {
-            Takes = new HashSet<TakeDb>();
-            Orders = new HashSet<OrderDb>();
+            Bookings = new HashSet<BookingDb>();
+            CheckInOuts = new HashSet<CheckInOutDb>();
+            Messages = new HashSet<MessageDb>();
         }
 
         [Key]
-        [Column("id")]
-        public Guid Id { get; set; }
+        [Column("user_id")]
+        public int UserId { get; set; }
 
         [Required]
-        [Column("login")]
+        [Column("name")]
         [MaxLength(100)]
-        public required string Login { get; set; }
-
-        [Required]
-        [Column("password")]
-        [MaxLength(255)]
-        public required string Password { get; set; }
+        public required string Name { get; set; }
 
         [Required]
         [Column("email")]
         [MaxLength(255)]
         public required string Email { get; set; }
 
+        [Required]
+        [Column("password_hash")]
+        [MaxLength(255)]
+        public required string PasswordHash { get; set; }
+
         [Column("role")]
-        public int Role { get; set; }
+        [MaxLength(20)]
+        public string Role { get; set; } = "guest";
 
-        [Column("createdAt")]
-        public DateTime CreatedAt { get; set; }
+        [Column("created_at")]
+        public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
 
-        [Column("last_login")] // Добавьте это поле
-        public DateTime? LastLogin { get; set; } // Может быть null
+        [Column("updated_at")]
+        public DateTime UpdatedAt { get; set; } = DateTime.UtcNow;
 
         // Navigation properties
-        public virtual ICollection<TakeDb> Takes { get; set; }
-        public virtual ICollection<OrderDb> Orders { get; set; }
+        public virtual ICollection<BookingDb> Bookings { get; set; }
+        public virtual ICollection<CheckInOutDb> CheckInOuts { get; set; }
+        public virtual ICollection<MessageDb> Messages { get; set; }
     }
 }

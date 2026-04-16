@@ -1,9 +1,7 @@
-﻿using FluentValidation;
+using FluentValidation;
 using Microsoft.Extensions.DependencyInjection;
 using Service.DAL;
 using Service.DAL.Storage;
-using Service.Domain.Models;
-using Service.Domain.ModelsDb;
 using Service.Domain.Validators;
 using Service.Domain.ViewModels.LoginAndRegistration;
 using Service.Services.Interfaces;
@@ -24,13 +22,6 @@ namespace Service
             // Регистрация валидаторов
             services.AddScoped<IValidator<LoginViewModel>, LoginUserValidator>();
             services.AddScoped<IValidator<RegisterViewModel>, RegisterUserValidator>();
-
-
-            //(Глава 17) ===
-            services.AddScoped<IValidator<Inventory>, InventoryValidator>();
-            services.AddScoped<IValidator<Delivery>, DeliveryValidator>();
-            services.AddScoped<IValidator<Take>, TakeValidator>();
-            services.AddScoped<IValidator<Order>, OrderValidator>();
         }
     }
 }

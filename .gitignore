@@ -1,0 +1,36 @@
+```
+# Build artifacts
+*.dll
+*.exe
+*.pdb
+*.config
+bin/
+obj/
+out/
+
+# Dependencies
+packages/
+node_modules/
+vendor/
+
+# Logs
+*.log
+
+# Environment
+.env
+.env.local
+*.env
+
+# Editors
+.vscode/
+.idea/
+*.userprefs
+*.user
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Testing
+TestResults/
+```
